@@ -1,38 +1,59 @@
 <template>
-  <h1>我是一个uuser-{{baseurl}}</h1>
-  --{{baseurlupdload}}--
+  <h1>我是一个uuser-{{ baseurl }}</h1>
+  --{{ baseurlupdload }}--
   {{ uid }}
-  {{store.state.msg}}
-  
-  <button @click="updaeMsg">changmsg</button>
-  
+  {{ store.state.msg }}
 
+  <button @click="updaeMsg">changmsg</button>
+  <button @click="sendChat">send</button>
+  <div v-for="(item, index) in chatSay" :key="index">
+    {{ item }}
+  </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  data(){
+  data() {
     return {
-      baseurl:'https',
-      baseurlupdload:import.meta.env.VITE_API_URL_KEY
-    }
-    
+      baseurl: "https",
+      baseurlupdload: import.meta.env.VITE_API_URL_KEY,
+      chatSay: [],
+    };
   },
-  props:['id'],
-  inject:['store'],
+  props: ["id"],
+  inject: ["store"],
   mounted() {
     // $router 表示当前活跃的路由对象
     console.log(this.$route);
     console.log(this.id);
   },
   setup() {},
-  methods:{
-    updaeMsg:function(){
-      this.store.changeMsg()
-    }
-  }
+  methods: {
+    updaeMsg: function () {
+      this.store.changeMsg();
+    },
+    sendChat: async function () {
+      const requestPayload = {
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: "please say Hello!" }],
+        temperature: 0.6,
+        stream: true,
+      };
+      const BASE_URL = "https://api.openai.com/v1/chat/completions";
+      const response = await axios.post(BASE_URL, requestPayload, {
+        headers: {
+          Authorization: `Bearer ${this.baseurlupdload}`,
+          "Content-Type": "application/json",
+        },
+      });
+      let res = response.data.choices[0].text.trim();
+      console.log("response", res);
+      this.chatSay.push(res);
+      console.log("response", this.chatSay);
+    },
+  },
 };
-
 </script>
 
 
@@ -46,7 +67,8 @@ export default {
 // console.log("--------------------");
 // console.log(props.id);
 
-import { processExpression } from '@vue/compiler-core';
+import { processExpression } from "@vue/compiler-core";
 
-// </script>
+//
+</script>
 
