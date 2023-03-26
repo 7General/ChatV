@@ -38,7 +38,7 @@ export default {
       console.log("sendChatsendChatsendChat")
       const requestPayload = {
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: "please say Hello!" }],
+        messages: [{ role: "user", content: "我帅吗" }],
         temperature: 0.6,
         stream: true,
       };
