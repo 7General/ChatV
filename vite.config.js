@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  
   plugins: [vue()],
   resolve: {
     alias: {
@@ -20,5 +21,8 @@ export default defineConfig({
         rewrite:path=>path.replace(/^\/path/,'') // 设置重写路径
        }
     }
-  }
+  },
+  define: {
+      'process.env': {}
+    },
 })

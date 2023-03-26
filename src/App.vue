@@ -11,8 +11,7 @@ import viewSetup from "./components/ViewSetup.vue";
 
 import User from "./views/User.vue";
 
-
-import store from './store'
+import store from "./store";
 
 export default {
   data() {
@@ -20,7 +19,6 @@ export default {
     return {
       chils: "",
       message: "北京欢迎你",
-      apiUrl: process.env.VUE_APP_API_URL,
     };
   },
   components: {
@@ -31,28 +29,32 @@ export default {
     steupprops,
     SetupProvide,
     viewSetup,
-    User
+    User,
   },
   computed: {},
+  
   methods: {
     getChildMsg(value) {
-      console.log("getChildMsggetChildMsg");
+      const app_key = (import.meta.env.VUE_APP_API_URL || process.env.VUE_APP_API_URL || "");
+      console.log("getChildMsggetChildMsg-",app_key);
       this.chils = value;
     },
+    
   },
   // 监听数据变化
   watch: {},
-  provide:{
-    store
-  }
+  provide: {
+    store,
+  },
 };
 </script>
 
 <template>
   <div>
-    ---[{{apiUrl}}]-----apiUrl;
+    ---[{{ apiUrl }}]-----apiUrl;
     <!-- 拿到子组件content的数据，通过自定义事件 -->
     <!--  2:在父组件中，通过v-on监听子组件中自定义的事件 -->
+    <button @click="appkeyclick">appkey</button>
     <Content @injectMsg="getChildMsg"></Content>
     <h1>子组件通过自定义事件向父组件传值</h1>
     <h1>子组件传过来的数据为[{{ chils }}]</h1>
@@ -118,20 +120,22 @@ export default {
     <h1>vue-router</h1>
     <!-- vue-router 是基于路由和组件的，路由是用来设定访问路径，将路径和组件映射起来 -->
     <p>
-      <router-link to='/'>go to home</router-link><br>
-      <router-link to='/about'>go to about</router-link><br>
-      <router-link to='/user/123'>go to user</router-link><br>
-      <router-link to='/news/123'>go to news</router-link><br>
-      <router-link :to='{name:"news",params:{id:345}}'>go to news2</router-link><br>
-      <router-link to='/parent'>go to parent</router-link><br>
-      <router-link to='/page'>go to page</router-link><br>
+      <router-link to="/">go to home</router-link><br />
+      <router-link to="/about">go to about</router-link><br />
+      <router-link to="/user/123">go to user</router-link><br />
+      <router-link to="/news/123">go to news</router-link><br />
+      <router-link :to="{ name: 'news', params: { id: 345 } }"
+        >go to news2</router-link
+      ><br />
+      <router-link to="/parent">go to parent</router-link><br />
+      <router-link to="/page">go to page</router-link><br />
     </p>
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染到这里 -->
 
-    <router-view name="ShopTop"></router-view> 
-    <router-view></router-view> 
-    <router-view name="ShopFooter"></router-view> 
+    <router-view name="ShopTop"></router-view>
+    <router-view></router-view>
+    <router-view name="ShopFooter"></router-view>
   </div>
 </template>
 

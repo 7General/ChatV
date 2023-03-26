@@ -1,12 +1,23 @@
 <template>
-  <h1>我是一个uuser</h1>
+  <h1>我是一个uuser-{{baseurl}}</h1>
+  --{{baseurlupdload}}--
   {{ uid }}
   {{store.state.msg}}
+  
   <button @click="updaeMsg">changmsg</button>
+  
+
 </template>
 
 <script>
 export default {
+  data(){
+    return {
+      baseurl:'https',
+      baseurlupdload:import.meta.env.VITE_API_URL_KEY
+    }
+    
+  },
   props:['id'],
   inject:['store'],
   mounted() {
@@ -34,5 +45,8 @@ export default {
 // const props = defineProps({ id: String });
 // console.log("--------------------");
 // console.log(props.id);
+
+import { processExpression } from '@vue/compiler-core';
+
 // </script>
 
