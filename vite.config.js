@@ -20,5 +20,10 @@ export default defineConfig({
         rewrite:path=>path.replace(/^\/path/,'') // 设置重写路径
        }
     }
+  },
+  define: {
+    'process.env': {
+      API_URL: JSON.stringify(process.env.API_URL)
+    }
   }
 })

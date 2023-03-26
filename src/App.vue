@@ -20,6 +20,7 @@ export default {
     return {
       chils: "",
       message: "北京欢迎你",
+      apiUrl: import.meta.env.API_URL,
     };
   },
   components: {
@@ -49,6 +50,7 @@ export default {
 
 <template>
   <div>
+    ---[{{apiUrl}}]-----apiUrl;
     <!-- 拿到子组件content的数据，通过自定义事件 -->
     <!--  2:在父组件中，通过v-on监听子组件中自定义的事件 -->
     <Content @injectMsg="getChildMsg"></Content>
