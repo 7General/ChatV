@@ -50,10 +50,10 @@ export default {
           "Content-Type": "application/json",
         },
       });
-      let res = response.data.choices[0].text.trim();
-      console.log("response", res);
-      this.chatSay.push(res);
-      console.log("response", this.chatSay);
+      // let res = response.data.choices[0].text.trim();
+      console.log("response", response);
+      // this.chatSay.push(res);
+      // console.log("response", this.chatSay);
     },
   },
 };
