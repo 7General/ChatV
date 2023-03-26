@@ -9,6 +9,7 @@
   <div v-for="(item, index) in chatSay" :key="index">
     {{ item }}
   </div>
+  123
 </template>
 
 <script>
