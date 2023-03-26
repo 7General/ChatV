@@ -35,6 +35,7 @@ export default {
       this.store.changeMsg();
     },
     sendChat: async function () {
+      console.log("sendChatsendChatsendChat")
       const requestPayload = {
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: "please say Hello!" }],
@@ -42,6 +43,7 @@ export default {
         stream: true,
       };
       const BASE_URL = "https://api.openai.com/v1/chat/completions";
+      console.log('-----',`Bearer ${this.baseurlupdload}`)
       const response = await axios.post(BASE_URL, requestPayload, {
         headers: {
           Authorization: `Bearer ${this.baseurlupdload}`,
