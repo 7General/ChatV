@@ -20,7 +20,7 @@ export default {
     return {
       chils: "",
       message: "北京欢迎你",
-      apiUrl: import.meta.env.API_URL,
+      apiUrl: process.env.VUE_APP_API_URL,
     };
   },
   components: {
