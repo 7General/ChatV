@@ -19,5 +19,15 @@ const routes = [
     history: createWebHashHistory(),
     routes
   })
+  // 全局守卫
+  // router.beforeEach((to,from,next)=>{
+  //   const isLogin = sessionStorage.getItem('token');
+  //   if(isLogin){
+  //     next();
+  //   } else {
+  //     console.log('用户没有登录')
+  //     next('/about');
+  //   }
+  // });
   
   export default router
