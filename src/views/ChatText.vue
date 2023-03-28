@@ -1,7 +1,7 @@
 <template>
   <input type="text" v-model="ChatData.inputValue" />
   <p>{{ ChatData.inputValue }}</p>
-  
+  <p>{{ ChatData.apikey }}</p>
   <ul>
     <li v-for="(item, index) in ChatData.list" :key="index">
       {{ item }}
