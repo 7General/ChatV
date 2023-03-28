@@ -2,8 +2,8 @@
   <div class="chatitem" @click="chatClick">聊天模式</div>
   <div class="chatitem" @click="chatimageClick">图片模式</div>
 </template>
-
-<script>
+  
+  <script lang="ts">
 import { useRouter } from "vue-router";
 export default {
   setup() {
@@ -20,12 +20,12 @@ export default {
     };
     return {
       chatClick,
-      chatimageClick
+      chatimageClick,
     };
   },
 };
 </script>
-
+  
 <style scoped>
 .chatitem {
   font-size: 2em;
@@ -34,3 +34,4 @@ export default {
   margin-bottom: 20px;
 }
 </style>
+  
