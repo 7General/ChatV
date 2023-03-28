@@ -10,12 +10,12 @@ export default {
     const router = useRouter();
     const chatClick = () => {
       router.push({
-        path: "/about",
+        path: "/chatt",
       });
     };
     const chatimageClick = () => {
       router.push({
-        path: "/about",
+        path: "/chati",
       });
     };
     return {
