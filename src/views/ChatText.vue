@@ -30,10 +30,14 @@ export default {
     };
     const sendChat = async () => {
       const msg = <ChatAskMessage>{
+        role:"user",
         content: ChatData.inputValue,
       };
       const requestPayload = <ChatAskItem>{
+        model: "gpt-3.5-turbo",
+        temperature: 0.6,
         messages: [msg],
+        stream: true,
       };
       const BASE_URL = "https://api.openai.com/v1/chat/completions";
       const response = await axios.post(BASE_URL, requestPayload, {
