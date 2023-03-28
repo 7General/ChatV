@@ -8,3 +8,9 @@ export interface ChatAskItem{
     temperature: 0.6,
     stream: true,
 }
+
+export interface ChatImageItem{
+    prompt: string,
+    n: 2,
+    size:"1024x1024"
+}
