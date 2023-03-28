@@ -1,7 +1,7 @@
 <template>
   <input type="text" v-model="ChatData.inputValue" />
   <p>{{ ChatData.inputValue }}</p>
-  <p>{{ ChatData.apikey }}</p>
+  
   <ul>
     <li v-for="(item, index) in ChatData.list" :key="index">
       {{ item }}
@@ -12,7 +12,7 @@
 </template>
   
   <script lang="ts">
-import { reactive, ref } from "vue";
+import { reactive } from "vue";
 import axios from "axios";
 import { ChatInputForm } from "../type/chatInput";
 import { ChatAskItem, ChatAskMessage } from "../type/ask";
@@ -25,7 +25,7 @@ export default {
       apikey: import.meta.env.VITE_API_URL_KEY,
     });
     const addItem = () => {
-      ChatData.list.push(ChatData.inputValue);
+      ChatData.list!.push(ChatData.inputValue);
       ChatData.inputValue = "";
     };
     const sendChat = async () => {

@@ -1,6 +1,6 @@
 export interface ChatInputForm{
     inputValue:string,
-    list:string[],
+    list?:string[],
     apikey:string
 }
 
