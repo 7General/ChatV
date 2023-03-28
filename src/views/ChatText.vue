@@ -53,12 +53,12 @@ export default {
           "Content-Type": "application/json",
         },
       });
-      const eventSource = new EventSource(BASE_URL);
-      eventSource.onmessage = (event) =>{
-        const json = JSON.parse(event.data);
-          const text = json.choices[0].delta?.content;
-        console.log("text>>",text);
-      }
+      // const eventSource = new EventSource(BASE_URL);
+      // eventSource.onmessage = (event) =>{
+      //   const json = JSON.parse(event.data);
+      //     const text = json.choices[0].delta?.content;
+      //   console.log("text>>",text);
+      // }
       console.log("response", response);
     };
 
