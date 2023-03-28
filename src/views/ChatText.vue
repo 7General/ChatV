@@ -1,7 +1,7 @@
 <template>
   <input type="text" v-model="ChatData.inputValue" />
   <p>{{ ChatData.inputValue }}</p>
-  
+
   <ul>
     <li v-for="(item, index) in ChatData.list" :key="index">
       {{ item }}
@@ -17,8 +17,15 @@ import axios from "axios";
 import { ChatInputForm } from "../type/chatInput";
 import { ChatAskItem, ChatAskMessage } from "../type/ask";
 
+import  parse  from 'eventsource-parser';
 export default {
+  data(){
+    return {
+      eventSource: null
+    }
+  },
   setup() {
+    
     const ChatData = reactive<ChatInputForm>({
       inputValue: "",
       list: ["11", "222", "33"],
@@ -30,7 +37,7 @@ export default {
     };
     const sendChat = async () => {
       const msg = <ChatAskMessage>{
-        role:"user",
+        role: "user",
         content: ChatData.inputValue,
       };
       const requestPayload = <ChatAskItem>{
@@ -46,8 +53,15 @@ export default {
           "Content-Type": "application/json",
         },
       });
+      const eventSource = new EventSource(BASE_URL);
+      eventSource.onmessage = (event) =>{
+        const json = JSON.parse(event.data);
+          const text = json.choices[0].delta?.content;
+        console.log("text>>",text);
+      }
       console.log("response", response);
     };
+
 
     return {
       addItem,
