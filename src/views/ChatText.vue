@@ -59,6 +59,7 @@ export default {
       //   console.log("text>>",text);
       // }
       console.log("response", response);
+      console.log("response-data", response.data);
       const json = JSON.parse(response.data);
       console.log("--------json",json);
       const text = json.choices[0].delta?.content;
