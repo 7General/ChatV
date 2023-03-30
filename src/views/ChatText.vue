@@ -60,6 +60,7 @@ export default {
       // }
       console.log("response", response);
       const json = JSON.parse(response.data);
+      console.log("--------json",json);
       const text = json.choices[0].delta?.content;
       console.log("--------text",text);
       /**
