@@ -3,7 +3,7 @@
 
   <button @click="sendChat">ask</button>
   <div>
-    <div class="imgItem" v-for="(item,index) in ChatImgData.list" :key="index">
+    <div class="imgItem" v-for="(item,index) in ChatImgData.listImge" :key="index">
       <img
         :src="item.url"
       />
@@ -38,7 +38,7 @@ export default {
     const ChatImgData = reactive<ChatInputForm>({
       inputValue: "",
       apikey: import.meta.env.VITE_API_URL_KEY,
-      list: [],
+      listImge: [],
     });
     const sendChat = async () => {
       console.log("image");
@@ -55,7 +55,7 @@ export default {
       console.log("response", response);
       let resArray = response.data.data;
 
-      ChatImgData.list = resArray;
+      ChatImgData.listImge = resArray;
     };
     return {
       ChatImgData,
