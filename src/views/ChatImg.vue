@@ -1,22 +1,48 @@
 <template>
-  <input type="text" v-model="ChatImgData.inputValue" />
+  <div class="cons">
+    <input class="inp" type="text" v-model="ChatImgData.inputValue" />
 
-  <button @click="sendChat">ask</button>
+    <button class="btn" @click="sendChat">生成图片</button>
+  </div>
+
   <div>
-    <div class="imgItem" v-for="(item,index) in ChatImgData.listImge" :key="index">
-      <img
-        :src="item.url"
-      />
+    <div
+      class="imgItem"
+      v-for="(item, index) in ChatImgData.listImge"
+      :key="index"
+    >
+      <img :src="item.url" />
     </div>
   </div>
 </template>
 <style scoped>
+.cons {
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 .imgItem {
   margin-right: 5px;
   float: left;
 }
 .imgItem img {
   width: 300px;
+}
+.inp {
+  border: 0px;
+  height: 48px;
+  width: 200px;
+  padding:0 auto;
+  margin-right: 20px;
+}
+.btn {
+  border: 0px solid transparent;
+  width: 120px;
+  height: 50px;
+  color: #fff;
+
 }
 </style>
 
@@ -38,7 +64,7 @@ export default {
       ChatImgData.listImge = [];
       const request = <ChatImageItem>{
         prompt: ChatImgData.inputValue,
-        n:4
+        n: 4,
       };
       const BASE_URL = "https://api.openai.com/v1/images/generations";
       const response = await axios.post(BASE_URL, request, {
