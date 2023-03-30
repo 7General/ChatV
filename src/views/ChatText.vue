@@ -20,11 +20,6 @@ import { ChatAskItem, ChatAskMessage } from "../type/ask";
 import { askResponse } from "../type/askResp";
 
 export default {
-  data() {
-    return {
-      eventSource: null,
-    };
-  },
   setup() {
     const ChatData = reactive<ChatInputForm>({
       inputValue: "",
@@ -37,7 +32,7 @@ export default {
     };
     const sendChat = async () => {
       ChatData.list!.push(ChatData.inputValue);
-      // ChatData.inputValue = "";
+
       const msg = <ChatAskMessage>{
         role: "user",
         content: ChatData.inputValue,
@@ -55,10 +50,6 @@ export default {
           "Content-Type": "application/json",
         },
       });
-      // console.log("response", response);
-      // console.log("response-data", response.data);
-      console.log("========================");
-      console.log("response-data-splict", response.data.split("\n\n"));
 
       let array = <askResponse>{
         list: response.data.split(/\n+/g),
@@ -88,8 +79,7 @@ export default {
         return JSON.parse(str).choices[0].delta?.content;
       });
       const lastes = res.filter((item) => item !== undefined);
-      console.log("===================,", lastes);
-      console.log("===================,", lastes.join(","));
+      
     };
 
     return {
