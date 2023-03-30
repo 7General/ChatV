@@ -1,7 +1,6 @@
 <template>
   <div class="cons">
     <input class="inp" type="text" v-model="ChatImgData.inputValue" />
-
     <button class="btn" @click="sendChat">生成图片</button>
   </div>
 

@@ -1,6 +1,9 @@
 <template>
-  <input type="text" v-model="ChatData.inputValue" />
-  <p>{{ ChatData.inputValue }}</p>
+  <div class="cons">
+    <input class="inp" type="text" v-model="ChatData.inputValue" />
+    <button class="btn" @click="sendChat">提问</button>
+  </div>
+  <!-- <p>{{ ChatData.inputValue }}</p>
 
   <ul>
     <li v-for="(item, index) in ChatData.list" :key="index">
@@ -8,7 +11,7 @@
     </li>
   </ul>
   <button @click="addItem">Add</button>
-  <button @click="sendChat">ask</button>
+   -->
 </template>
   
   <script lang="ts">
@@ -72,6 +75,33 @@ export default {
 };
 </script>
   
-  
-  <style  scoped>
+<style scoped>
+.cons {
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.imgItem {
+  margin-right: 5px;
+  float: left;
+}
+.imgItem img {
+  width: 300px;
+}
+.inp {
+  border: 0px;
+  height: 48px;
+  width: 200px;
+  padding:0 auto;
+  margin-right: 20px;
+}
+.btn {
+  border: 0px solid transparent;
+  width: 120px;
+  height: 50px;
+  color: #fff;
+
+}
 </style>
