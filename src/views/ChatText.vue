@@ -71,6 +71,7 @@ export default {
       });
       const lastes = resfilter.filter((item) => item !== undefined);
       ChatData.list!.push(lastes.join(""));
+      ChatData.inputValue = "";
     };
 
     const send = () => {
