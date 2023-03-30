@@ -19,7 +19,6 @@ import { ChatInputForm } from "../type/chatInput";
 import { ChatAskItem, ChatAskMessage } from "../type/ask";
 import { askResponse } from "../type/askResp";
 
-import parse from "eventsource-parser";
 export default {
   data() {
     return {
@@ -38,7 +37,7 @@ export default {
     };
     const sendChat = async () => {
       ChatData.list!.push(ChatData.inputValue);
-      ChatData.inputValue = "";
+      // ChatData.inputValue = "";
       const msg = <ChatAskMessage>{
         role: "user",
         content: ChatData.inputValue,
@@ -56,8 +55,8 @@ export default {
           "Content-Type": "application/json",
         },
       });
-      console.log("response", response);
-      console.log("response-data", response.data);
+      // console.log("response", response);
+      // console.log("response-data", response.data);
       console.log("response-data-splict", response.data.split("\n\n"));
 
       let array = <askResponse>{
