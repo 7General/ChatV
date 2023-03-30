@@ -2,6 +2,7 @@
   <div class="cons">
     <input class="inp" type="text" v-model="ChatData.inputValue" />
     <button class="btn" @click="sendChat">提问</button>
+    <button class="btn" @click="trans">提问2</button>
   </div>
   
   <ul>
@@ -60,8 +61,10 @@ export default {
       // }
       console.log("response", response);
       console.log("response-data", response.data);
-      const json = JSON.parse(response.data);
-      console.log("--------json111",json);
+      console.log("response-data-splict", response.data.split("\n\n"));
+
+      // const json = JSON.parse(response.data);
+      // console.log("--------json111",json);
       // const text = json.choices[0].delta?.content;
       // console.log("--------text",text);
       /**
@@ -99,6 +102,10 @@ data: [DONE]
        */
       
     };
+
+    const send=()=>{
+
+    }
 
 
     return {
