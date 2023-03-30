@@ -63,7 +63,7 @@ export default {
       ChatImgData.listImge = [];
       const request = <ChatImageItem>{
         prompt: ChatImgData.inputValue,
-        n: 2,
+        n: 4,
       };
       const BASE_URL = "https://api.openai.com/v1/images/generations";
       const response = await axios.post(BASE_URL, request, {

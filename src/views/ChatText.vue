@@ -3,15 +3,12 @@
     <input class="inp" type="text" v-model="ChatData.inputValue" />
     <button class="btn" @click="sendChat">提问</button>
   </div>
-  <!-- <p>{{ ChatData.inputValue }}</p>
-
+  
   <ul>
     <li v-for="(item, index) in ChatData.list" :key="index">
       {{ item }}
     </li>
   </ul>
-  <button @click="addItem">Add</button>
-   -->
 </template>
   
   <script lang="ts">
@@ -28,10 +25,9 @@ export default {
     }
   },
   setup() {
-    
     const ChatData = reactive<ChatInputForm>({
       inputValue: "",
-      list: ["11", "222", "33"],
+      list: [],
       apikey: import.meta.env.VITE_API_URL_KEY,
     });
     const addItem = () => {
@@ -63,6 +59,54 @@ export default {
       //   console.log("text>>",text);
       // }
       console.log("response", response);
+      const json = JSON.parse(response.data);
+      const text = json.choices[0].delta?.content;
+      console.log("--------text",text);
+      /**
+      "data: {
+          "id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU",
+          "object":"chat.completion.chunk",
+          "created":1680160975,
+          "model":"gpt-3.5-turbo-0301",
+          "choices":[
+              {"delta":{"role":"assistant"},"index":0,"finish_reason":null}]}
+
+data: {
+    "id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU",
+    "object":"chat.completion.chunk",
+    "created":1680160975,
+    "model":"gpt-3.5-turbo-0301",
+    "choices":[{"delta":{"content":"你"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"好"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"！"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"有"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"什"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"么"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"需要"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"帮"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"助"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"的"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"吗"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"？"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-6zguV8Bc8H7i9VpPRAaO79sCCfabU","object":"chat.completion.chunk","created":1680160975,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{},"index":0,"finish_reason":"stop"}]}
+
+data: [DONE]
+
+"
+       */
+      
     };
 
 
