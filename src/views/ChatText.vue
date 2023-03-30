@@ -57,6 +57,7 @@ export default {
       });
       // console.log("response", response);
       // console.log("response-data", response.data);
+      console.log("========================");
       console.log("response-data-splict", response.data.split("\n\n"));
 
       let array = <askResponse>{
