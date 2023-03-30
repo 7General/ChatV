@@ -70,7 +70,7 @@ export default {
         return JSON.parse(str).choices[0].delta?.content;
       });
       const lastes = resfilter.filter((item) => item !== undefined);
-      ChatData.list!.push(lastes.join(","));
+      ChatData.list!.push(lastes.join(""));
     };
 
     const send = () => {
