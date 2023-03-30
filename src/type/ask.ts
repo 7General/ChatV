@@ -11,6 +11,6 @@ export interface ChatAskItem{
 
 export interface ChatImageItem{
     prompt: string,
-    n: 4,
+    n:2,
     size:"1024x1024"
 }
